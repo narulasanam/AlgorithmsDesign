@@ -1,6 +1,6 @@
 package com.snarula.algo;
 
-public class FirstElementPivot {
+public class LastElementPivot {
 
 	long count = 0;
 
@@ -10,7 +10,9 @@ public class FirstElementPivot {
 			return;*/
 		
 		if (l < r) {
-			int pivot = array[l];
+			int pivot = array[r];
+			
+			swap(array,l,r);
 
 			int p = partition(array, l, r, pivot);
 			count += p - l;
@@ -42,5 +44,7 @@ public class FirstElementPivot {
 		array[i] = array[j];
 		array[j] = temp;
 	}
+
+
 
 }

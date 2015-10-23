@@ -1,16 +1,22 @@
 package com.snarula.algo;
 
-public class FirstElementPivot {
+import java.util.Arrays;
+import java.util.TreeMap;
+
+public class MedianElementPivot {
 
 	long count = 0;
 
 	public void quickSort(int[] array, int l, int r) {
-		
-		/*if(l!=0 && l-r <= 1 )
-			return;*/
-		
 		if (l < r) {
-			int pivot = array[l];
+
+			int pivot = findMedian(array, l, r);
+
+			if (pivot == array[r])
+				swap(array, l, r);
+
+			else if (pivot == array[(r + l) / 2])
+				swap(array, (r + l) / 2, l);
 
 			int p = partition(array, l, r, pivot);
 			count += p - l;
@@ -21,6 +27,12 @@ public class FirstElementPivot {
 			if (p + 1 < r)
 				quickSort(array, p + 1, r);
 		}
+	}
+
+	private int findMedian(int[] array, int l, int r) {
+		int arr[] = { array[l], array[r], array[(l + r) / 2] };
+		Arrays.sort(arr);
+		return arr[1];
 	}
 
 	private int partition(int[] array, int l, int r, int pivot) {

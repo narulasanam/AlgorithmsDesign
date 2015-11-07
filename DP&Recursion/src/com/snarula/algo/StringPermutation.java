@@ -1,6 +1,6 @@
 package com.snarula.algo;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StringPermutation {
 	
@@ -9,7 +9,45 @@ public class StringPermutation {
 	public static void main(String arg[]){
 	    //calculatePermutation("sanam");
 	    System.out.println();
-	    calculatePerm2("san");
+	    //calculatePerm2("san");
+	    calcDupPerm("aaa");
+	}
+
+	private static void calcDupPerm(String string) {
+		HashMap<Character,Integer> map = new HashMap<>();
+		map = buildFreqTable(string.toCharArray());
+		calcDupPerm(map,"",string.length());
+	
+		
+	}
+
+	private static void calcDupPerm(HashMap<Character, Integer> map,
+			String prefix, int n) {
+		if(n == 0) {
+			System.out.println(prefix);
+		}
+		else {
+			for(char c: map.keySet()) {
+				int count = map.get(c);
+				if(count > 0){
+					map.put(c, count-1);
+					calcDupPerm(map, prefix +c, n-1);
+					map.put(c, count);
+				}
+			}
+		}
+		
+	}
+
+	private static HashMap<Character, Integer> buildFreqTable(char[] charArray) {
+		HashMap<Character,Integer> map = new HashMap<>();
+		for(char c: charArray){
+			if(!map.containsKey(c)) {
+				map.put(c,0);
+			}
+			map.put(c, map.get(c)+1);
+		}
+		return map;
 	}
 
 	private static void calculatePermutation(String string) {

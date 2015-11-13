@@ -3,7 +3,9 @@ package com.snarula.algo;
 public class PaintFill {
 
 	public static void main(String arg[]){
-		int mat[][] = {{1,2,3},{0,0,0},{0,7,0}};
+		int mat[][] = {{1,0,0},
+						{0,0,0},
+						{0,1,1}};
 		if(paint(mat, mat.length -1, mat[0].length -1)){
 			System.out.println(mat);
 		}
@@ -19,6 +21,7 @@ public class PaintFill {
 			paint(mat, row, col - 1);
 			paint(mat, row , col + 1);
 		}
+		
 		
 		return true;
 	}

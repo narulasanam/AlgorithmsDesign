@@ -6,7 +6,7 @@ import java.util.Map;
 
 class PalinPermutation {
 	public static void main(String arg[]) {
-		String input = "this hit";
+		String input = "thisttttttff hit   ";
 		System.out.println(checkPalinPerm(input));
 	}
 
@@ -35,7 +35,7 @@ class PalinPermutation {
 			}
 		}
 
-		if (count != 1) {
+		if (count <= 1) {
 			return false;
 		}
 		return true;

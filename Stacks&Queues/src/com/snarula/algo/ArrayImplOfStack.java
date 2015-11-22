@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 public class ArrayImplOfStack {
 
 	int maxLimit;
-	int min = -1;
+	int min = Integer.MAX_VALUE;
 	int size;
 	int top; 
 	int [] stack;
@@ -19,15 +19,14 @@ public class ArrayImplOfStack {
 	
 	void push(int data) {
 		if(size == maxLimit) {
-			System.out.println("Overflow");
+			System.err.println("Overflow");
 			return;
 		}
 		
 		
-		if(min == -1 || data < stack[min])
-			min = 0;
-		else
-			min++;
+		if(data < min)
+			min = data;
+		
 		
 		moveArray(data);
 		size++;
@@ -44,7 +43,7 @@ public class ArrayImplOfStack {
 
 	int pop(){
 		if(size == 0) {
-			System.out.println("underflow");
+			System.err.println("underflow");
 			return 0;
 		}
 		
@@ -54,6 +53,10 @@ public class ArrayImplOfStack {
 	}
 	
 	int min(){
-		return stack[min];
+		if(size == 0){
+			System.err.println("stack is empty");
+			return Integer.MAX_VALUE;
+		}
+		return min;
 	}
 }

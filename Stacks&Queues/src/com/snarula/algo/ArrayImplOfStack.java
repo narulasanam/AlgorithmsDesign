@@ -1,7 +1,5 @@
 package com.snarula.algo;
 
-import java.lang.reflect.Array;
-
 public class ArrayImplOfStack {
 
 	int maxLimit;
@@ -23,10 +21,8 @@ public class ArrayImplOfStack {
 			return;
 		}
 		
-		
 		if(data < min)
 			min = data;
-		
 		
 		moveArray(data);
 		size++;

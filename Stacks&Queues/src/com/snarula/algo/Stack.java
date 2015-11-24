@@ -14,7 +14,7 @@ public class Stack<T> {
 	
 	private StackNode<T> top;
 	
-	void push(T data) {
+	public T push(T data) {
 
 		StackNode<T> temp = new StackNode<T>(data);
 		if(top == null){
@@ -26,9 +26,11 @@ public class Stack<T> {
 		}
 		size++;
 		
+		return data;
+		
 	}
 	
-	T pop(){
+	public T pop(){
 		if(top == null) return null;
 		
 		T temp = top.data;
@@ -46,5 +48,12 @@ public class Stack<T> {
 		if(top == null) return null;
 		
 		return top.data;
+	}
+	
+	public boolean isEmpty(){
+		if(size ==0)
+			return true;
+		
+		return false;
 	}
 }

@@ -24,6 +24,18 @@ public class TraversalTest {
 		System.out.println("*****POSTORDER*******");
 		t.postOrderTraversal(root);
 		System.out.println("************");
+		
+		
+		System.out.println("*****LOT*******");
+		t.levelOrderTraversal(root);
+		
+		System.out.println("*****REC**LOT*******");
+		t.recLevelOrderTraversal(root);
+		
+		System.out.println("*****Spiral*******");
+		t.spiralTraversal(root);
+		
+		
 
 	}
 

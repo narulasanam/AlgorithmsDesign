@@ -1,4 +1,4 @@
-package com.snarula.algo;
+package com.snarula.algo.tree;
 
 public class TreeTraversals {
 	Node root;

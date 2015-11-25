@@ -1,5 +1,5 @@
 package com.snarula.algo.test;
-import com.snarula.algo.*;
+import com.snarula.algo.tree.*;
 
 public class TraversalTest {
 

@@ -10,17 +10,43 @@ class RotateMatrix {
 			System.out.println("Size cannot be zero");
 		}
 		
-
+		print(matrix);
+		System.out.println("*************");
 		print(rotateMatrix90(matrix, size));
+		System.out.println("*************");
+		print(rotateMatrix90(matrix, size));
+		System.out.println("*************");
 		print(rotateMatrix180(matrix, size));
 	}
 
 	private static int[][] rotateMatrix180(int[][] matrix, int size) {
 		
-		// TODO: 
-		
+		for (int layer = 0; layer < size / 2; layer++) {
+			int first = layer;
+			int last = size - 1 - layer;
+			for (int i = first; i < last; i++) {
+				int offset = i - first;
+				
+				// save top
+				int top = matrix[first][i];
+
+				matrix[first][i] = matrix[last][last - offset]; //matrix[last - offset][first];
+				matrix[last][last - offset] = top;
+				
+				
+				int leftBottom = matrix[last - offset][first];
+				
+				matrix[last - offset][first] = matrix[i][last];
+				matrix[i][last] = leftBottom;
+
+			}
+
+		}
+
 		return matrix;
 	}
+		
+		
 
 	private static void print(int[][] rotateMatrix) {
 		for(int [] row :rotateMatrix){
@@ -48,7 +74,7 @@ class RotateMatrix {
 
 				matrix[last][last - offset] = matrix[i][last];
 
-				matrix[first + offset][last] = top;
+				matrix[i][last] = top;
 
 			}
 

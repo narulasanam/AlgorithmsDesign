@@ -79,31 +79,66 @@ public class TreeTraversals {
 				System.out.println(temp.data);
 				if (!directionFlag) {
 					if (temp.left != null) {
-						stack.push(temp.left);
+						tempStack.push(temp.left);
 					}
 
 					if (temp.right != null) {
-						stack.push(temp.right);
+						tempStack.push(temp.right);
 					}
 
 				} else {
 					if (temp.right != null) {
-						stack.push(temp.right);
+						tempStack.push(temp.right);
 					}
 					if (temp.left != null) {
-						stack.push(temp.left);
+						tempStack.push(temp.left);
 					}
 				}
 			}
 			directionFlag = !directionFlag;
+			stack = tempStack;
 
 		}
 
 	}
 
-	private void recLevelOrdertraversal(List<Node> level) {
-		// TODO Auto-generated method stub
+	public void recSpiralTraversal(Node node) {
+		if (node == null)
+			return;
+		recSpiralTraversal(Arrays.asList(node), false);
+	}
 
+	private void recSpiralTraversal(List<Node> level, boolean directionFlag) {
+		LinkedList<Node> nextLevel = new LinkedList<Node>();
+		for (Node n : level) {
+			System.out.println(n.data);
+			if (!directionFlag) {
+
+				if (n.right != null) {
+					nextLevel.addLast(n.right);
+				}
+
+				if (n.left != null) {
+					nextLevel.addLast(n.left);
+				}
+			}
+			else {
+				if (n.left != null) {
+					nextLevel.addLast(n.left);
+				}
+				
+				if (n.right != null) {
+					nextLevel.addLast(n.right);
+				}
+			}
+		}
+		if (!nextLevel.isEmpty()) {
+			recSpiralTraversal(nextLevel, !directionFlag);
+		}
+
+	}
+
+	private void recLevelOrdertraversal(List<Node> level) {
 		LinkedList<Node> nextLevel = new LinkedList<>();
 		for (Node n : level) {
 			System.out.println(n.data);

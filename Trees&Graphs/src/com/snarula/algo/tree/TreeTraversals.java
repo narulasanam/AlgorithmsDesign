@@ -30,16 +30,16 @@ public class TreeTraversals {
 
 	public void inOrderTraversal(Node node) {
 		if (node != null) {
-			preOrderTraversal(node.left);
+			inOrderTraversal(node.left);
 			visit(node);
-			preOrderTraversal(node.right);
+			inOrderTraversal(node.right);
 		}
 	}
 
 	public void postOrderTraversal(Node node) {
 		if (node != null) {
-			preOrderTraversal(node.left);
-			preOrderTraversal(node.right);
+			postOrderTraversal(node.left);
+			postOrderTraversal(node.right);
 			visit(node);
 		}
 	}

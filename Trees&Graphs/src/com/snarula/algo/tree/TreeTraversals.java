@@ -28,6 +28,32 @@ public class TreeTraversals {
 		}
 	}
 
+	public void preOrderIterative(Node root) {
+		if (root == null) {
+			return;
+		}
+
+		Stack<Node> stack = new Stack<Node>();
+		stack.push(root);
+		while (!stack.isEmpty()) {
+			visit(stack.pop());
+			if (root.right != null) {
+				stack.push(root.right);
+			}
+			if (root.left != null) {
+				stack.push(root.left);
+			}
+		}
+
+	}
+	
+	public void inOrderTraversalIterative(Node root) {
+		if (root == null) {
+			return;
+		}
+		
+	}
+
 	public void inOrderTraversal(Node node) {
 		if (node != null) {
 			inOrderTraversal(node.left);
@@ -121,12 +147,11 @@ public class TreeTraversals {
 				if (n.left != null) {
 					nextLevel.addLast(n.left);
 				}
-			}
-			else {
+			} else {
 				if (n.left != null) {
 					nextLevel.addLast(n.left);
 				}
-				
+
 				if (n.right != null) {
 					nextLevel.addLast(n.right);
 				}

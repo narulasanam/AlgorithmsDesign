@@ -5,16 +5,23 @@ public class TraversalTest {
 
 	public static void main(String[] args) {
 		Node root = new Node(5);
-		Node left = new Node(1);
-		Node right = new Node(10);
-		Node leftleft = new Node(11);
-		Node leftright = new Node(12);
+		Node left = new Node(3);
+		Node right = new Node(9);
+		
+		Node leftleft = new Node(2);
+		Node leftright = new Node(1);
+		
+		Node rightLeft = new Node(7);
+		Node rightRight = new Node(10);
 		
 		root.setLeft(left);
 		root.setRight(right);
 		
 		left.setLeft(leftleft);
 		left.setRight(leftright);
+		
+		right.setLeft(rightLeft);
+		right.setRight(rightRight);
 		
 		
 		TreeTraversals t = new TreeTraversals(root);
@@ -30,7 +37,7 @@ public class TraversalTest {
 		t.postOrderTraversal(root);
 		System.out.println("************");
 		
-		
+		/*
 		System.out.println("*****LOT*******");
 		t.levelOrderTraversal(root);
 		
@@ -42,6 +49,15 @@ public class TraversalTest {
 		
 		System.out.println("*****REC Spiral*******");
 		t.recSpiralTraversal(root);
+		*/
+		
+		System.out.println("*****INORDER**Iterative*****");
+		t.inOrderTraversalIterative(root);
+		System.out.println("************");
+		
+		System.out.println("*****POSTORDER*Iterative******");
+		t.postOrderTraversalIterative(root);
+		System.out.println("************");
 		
 		
 

@@ -52,6 +52,18 @@ public class TreeTraversals {
 			return;
 		}
 		
+		Stack<Node> stack = new Stack<Node>();
+		Node node = root;
+		while(!stack.isEmpty() || node!=null) {
+			if(node!=null) {
+				stack.push(node);
+				node = node.left;
+			} else {
+				Node t = stack.pop();
+				visit(t);
+				node = t.right;
+			}
+		}
 	}
 
 	public void inOrderTraversal(Node node) {
@@ -68,6 +80,42 @@ public class TreeTraversals {
 			postOrderTraversal(node.right);
 			visit(node);
 		}
+	}
+	
+	public void postOrderTraversalIterative(Node node) {
+		if (node == null) {
+			return;
+		}
+		
+		Stack <Node> stack = new Stack<>();
+		Node prev = null;
+		stack.push(node);
+		while(!stack.isEmpty()) {
+			Node current = stack.peek();
+			if (prev == null || prev.left == null || prev.right == null) {
+				if(current.left!=null) {
+					stack.push(current.left);
+				} else if (current.right != null) {
+					stack.push(current.right);
+				} else {
+					stack.pop();
+					visit(current);
+				}
+			} else if(current.left == prev) {
+				if(current.right != null) {
+					stack.push(current.right);
+				} else {
+					stack.pop();
+					visit(current);
+				}
+			} else if (current.right ==  prev){
+				stack.pop();
+				visit(current);
+			}
+			
+			prev = current;
+		}
+		
 	}
 
 	public void levelOrderTraversal(Node node) {

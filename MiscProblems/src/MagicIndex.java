@@ -8,7 +8,8 @@
 public class MagicIndex {
 	static int[] array ={-4, -3, -2, 0, 2, 5, 8};
 	public static void main(String arg[]) {
-		findMagicIndex(array);
+		//findMagicIndex(array);
+		recFindMagicIndex(array, 0, array.length-1);
 	}
 
 	static void findMagicIndex(int[] array) {
@@ -27,6 +28,23 @@ public class MagicIndex {
 		}
 		if(found){
 			System.out.println(mid);
+		} else {
+			System.out.println("no such element");
+		}
+		
+	}
+	
+	static void recFindMagicIndex(int[] array, int start, int last) {
+		if(start < last) {
+			int mid = (start + last)/2;
+			if (array[mid] < mid) {
+				recFindMagicIndex(array, mid+1, last);
+			} else if (array[mid] > mid) {
+				recFindMagicIndex(array, start, mid-1);
+			} else {
+				System.out.println(mid);
+			}
+		
 		} else {
 			System.out.println("no such element");
 		}

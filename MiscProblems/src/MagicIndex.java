@@ -6,7 +6,7 @@
  * For example: A = -4, -3, -2, 0, 2, 5, 8, find an index where A[i] = i
  */
 public class MagicIndex {
-	static int[] array ={-4, -3, -2, 0, 2, 5, 8};
+	static int[] array ={-4, -3, -2, 0, 3, 5, 8};
 	public static void main(String arg[]) {
 		//findMagicIndex(array);
 		recFindMagicIndex(array, 0, array.length-1);
@@ -16,7 +16,7 @@ public class MagicIndex {
 		int start = 0, last =array.length -1, mid = 0;
 		boolean found = false;
 		while(start<last) {
-			mid = (start + last)/2;
+			mid = start + ((last - start)/2);
 			if(array[mid] < mid) {
 				start = mid+1;
 			} else if(array[mid] > mid) {
@@ -35,8 +35,9 @@ public class MagicIndex {
 	}
 	
 	static void recFindMagicIndex(int[] array, int start, int last) {
-		if(start < last) {
-			int mid = (start + last)/2;
+		if(start <= last) {
+			int mid = start +(last - start)/2;
+			//int mid = (start + last)/2 -1;
 			if (array[mid] < mid) {
 				recFindMagicIndex(array, mid+1, last);
 			} else if (array[mid] > mid) {

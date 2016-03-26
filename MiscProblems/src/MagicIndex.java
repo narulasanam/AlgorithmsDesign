@@ -36,6 +36,7 @@ public class MagicIndex {
 	
 	static void recFindMagicIndex(int[] array, int start, int last) {
 		if(start <= last) {
+			// http://googleresearch.blogspot.ca/2006/06/extra-extra-read-all-about-it-nearly.html
 			int mid = start +(last - start)/2;
 			//int mid = (start + last)/2 -1;
 			if (array[mid] < mid) {

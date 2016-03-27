@@ -6,16 +6,16 @@
  * For example: A = -4, -3, -2, 0, 2, 5, 8, find an index where A[i] = i
  */
 public class MagicIndex {
-	static int[] array ={-4, -3, -2, 0, 3, 5, 8};
+	static int[] array ={-4, -3, -2, 0, 3, 5};
 	public static void main(String arg[]) {
-		//findMagicIndex(array);
+		findMagicIndex(array);
 		recFindMagicIndex(array, 0, array.length-1);
 	}
 
 	static void findMagicIndex(int[] array) {
 		int start = 0, last =array.length -1, mid = 0;
 		boolean found = false;
-		while(start<last) {
+		while(start<=last) {
 			mid = start + ((last - start)/2);
 			if(array[mid] < mid) {
 				start = mid+1;

@@ -25,5 +25,20 @@ public class KadanesAlgo implements SearchAndFind {
 
 		return maxSum;
 	}
+	private void findMaxSumSubArray(int[] arr) {
+	    long maxSum = Long.MIN_VALUE, prevSum = 0;
+        
+            for(int num: arr) {
+                int currentSum = num;
+                if(prevSum > 0) {
+                    currentSum += prevSum;
+                }
+                if(currentSum > maxSum) {
+                    maxSum = currentSum;
+                }
+            prevSum = currentSum;
+            }
+        System.out.println(maxSum);
+        }
 
 }
